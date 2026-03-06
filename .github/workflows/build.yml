@@ -19,14 +19,29 @@ jobs:
       with:
         dotnet-version: '8.0.x'
         
-    - name: Restore dependencies
-      run: dotnet restore KaliteKontrolApp/KaliteKontrolApp.csproj
+    - name: Find and Restore dependencies
+      run: |
+        $projectFile = Get-ChildItem -Path . -Filter "*.csproj" -Recurse | Select-Object -First 1
+        if ($projectFile) {
+          Write-Host "Found project file: $($projectFile.FullName)"
+          dotnet restore "$($projectFile.FullName)"
+        } else {
+          Write-Error "No .csproj file found!"
+          exit 1
+        }
+      shell: pwsh
       
     - name: Build
-      run: dotnet build KaliteKontrolApp/KaliteKontrolApp.csproj --configuration Release --no-restore
+      run: |
+        $projectFile = Get-ChildItem -Path . -Filter "*.csproj" -Recurse | Select-Object -First 1
+        dotnet build "$($projectFile.FullName)" --configuration Release --no-restore
+      shell: pwsh
       
     - name: Publish
-      run: dotnet publish KaliteKontrolApp/KaliteKontrolApp.csproj --configuration Release --no-build --output ./publish
+      run: |
+        $projectFile = Get-ChildItem -Path . -Filter "*.csproj" -Recurse | Select-Object -First 1
+        dotnet publish "$($projectFile.FullName)" --configuration Release --no-build --output ./publish
+      shell: pwsh
       
     - name: Upload build artifacts
       uses: actions/upload-artifact@v4
