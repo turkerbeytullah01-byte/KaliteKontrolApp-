@@ -1,6 +1,7 @@
 using System;
 using System.IO;
 using System.Windows.Forms;
+using KaliteKontrolApp.Forms;  // EKLENDİ: MainForm için
 
 namespace KaliteKontrolApp
 {
@@ -10,6 +11,8 @@ namespace KaliteKontrolApp
             Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
             "KaliteKontrolApp",
             "database.db");
+        
+        public static string AppVersion = "1.0.0";  // EKLENDİ
 
         [STAThread]
         static void Main()
@@ -19,7 +22,7 @@ namespace KaliteKontrolApp
             
             // Veritabanı klasörünü oluştur
             var dbDir = Path.GetDirectoryName(DatabasePath);
-            if (!Directory.Exists(dbDir))
+            if (!string.IsNullOrEmpty(dbDir) && !Directory.Exists(dbDir))
                 Directory.CreateDirectory(dbDir);
             
             Application.Run(new MainForm());
