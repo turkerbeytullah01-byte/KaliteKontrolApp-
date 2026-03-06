@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using KaliteKontrolApp.Models;
+using KaliteKontrolApp.Forms;  // EKLENDİ: MonthlyData için
 
 namespace KaliteKontrolApp.Data
 {
