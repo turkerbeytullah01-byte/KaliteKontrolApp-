@@ -1,18 +1,18 @@
 using KaliteKontrolApp.Controls;
-using KaliteKontrolApp.Models;  // Statistics VERİ MODELİ için değiştirildi
+using KaliteKontrolApp.Models;  // DEĞİŞTİRİLDİ: Utils yerine Models
 using SkiaSharp;
 using SkiaSharp.Views.Desktop;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace KaliteKontrolApp.Forms;
-
-public partial class ReportsControl : UserControl
+namespace KaliteKontrolApp.Forms
 {
-    private SKControl _pieChartControl = null!;
-    private SKControl _trendChartControl = null!;
-    private Statistics _currentStats = new();  // Bu artık Models.Statistics
+    public partial class ReportsControl : UserControl
+    {
+        private SKControl _pieChartControl = null!;
+        private SKControl _trendChartControl = null!;
+        private Statistics _currentStats = new();
     
     public ReportsControl()
     {
