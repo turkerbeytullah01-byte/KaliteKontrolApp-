@@ -1,5 +1,5 @@
 using KaliteKontrolApp.Controls;
-using KaliteKontrolApp.Utils;
+using KaliteKontrolApp.Models;  // Statistics VERİ MODELİ için değiştirildi
 using SkiaSharp;
 using SkiaSharp.Views.Desktop;
 using System;
@@ -12,7 +12,7 @@ public partial class ReportsControl : UserControl
 {
     private SKControl _pieChartControl = null!;
     private SKControl _trendChartControl = null!;
-    private Statistics _currentStats = new();
+    private Statistics _currentStats = new();  // Bu artık Models.Statistics
     
     public ReportsControl()
     {
