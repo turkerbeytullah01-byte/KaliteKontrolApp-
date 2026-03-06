@@ -1,9 +1,13 @@
 using KaliteKontrolApp.Controls;
+using KaliteKontrolApp.Data;
 using KaliteKontrolApp.Models;
+using KaliteKontrolApp.Utils;
 using SkiaSharp;
 using SkiaSharp.Views.Desktop;
 using System;
+using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace KaliteKontrolApp.Forms
@@ -524,8 +528,7 @@ namespace KaliteKontrolApp.Forms
     
         private void BtnProductReport_Click(object? sender, EventArgs e)
         {
-            using var reportForm = new ProductReportForm();
-            reportForm.ShowDialog(this);
+            MessageBox.Show("Ürün bazlı rapor özelliği yakında eklenecek!", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     
         private void BtnBackup_Click(object? sender, EventArgs e)
@@ -556,4 +559,4 @@ namespace KaliteKontrolApp.Forms
         public int Nok { get; set; }
         public int Conditional { get; set; }
     }
-}  // <-- BU SATIR EKLENDİ (Namespace kapanışı)
+}
